@@ -17,7 +17,7 @@ pipeline {
         stage('deploy kubernetes') {
             steps {
                 sh '''
-                kubectl create deployment pl-bulk-prod --image=doitcoemt/cicdetest
+                kubectl create deployment pl-bulk-prod --image=doitcomet/cicdtest:green
                 kubectl expose deployment pl-bulk-prod --type=LoadBalancer --port=80 --target-port=80 --name=pl-bulk-prod
                 '''
             }
