@@ -9,12 +9,12 @@ pipeline {
         stage('docker build and push') {
             steps {
                 sh '''
-                docker build -t  doitcomet/cicdtest:green .
-                docker push doitcomet/cicdtest:green 
+                sudo docker build -t  doitcomet/cicdtest:green .
+                sudo docker push doitcomet/cicdtest:green 
                 '''
             }
         }
-        stage('deploy kubernetes') {
+        stage('deploy and service') {
             steps {
                 sh '''
                 kubectl create deployment pl-bulk-prod --image=doitcomet/cicdtest:green
